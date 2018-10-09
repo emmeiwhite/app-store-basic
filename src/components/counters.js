@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Counter from './counter';
+import { timingSafeEqual } from 'crypto';
 
 class Counters extends Component { 
     //Parent feeds children on the children's demand.
@@ -18,14 +19,19 @@ class Counters extends Component {
     //  newState.counters.splice((counterId-1),1);
     //  this.setState(newState);
 
+        const counters = this.state.counters.filter(c=>c.id!==counterId);
+        this.setState({counters})
     }
 
     render() { 
         return ( 
             <div className="counters">
              {this.state.counters.map((counter)=>{
-                 return <Counter key={counter.id} value={counter.value} id={counter.id} onDelete={this.deleteHandler}/> 
-             })}
+                 return <Counter 
+                        key={counter.id}
+                        counter={counter}
+                        onDelete={this.deleteHandler}/> 
+              })}
             </div>
            
         );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = { 
-        value:this.props.value // from parent props is being passed 
+        value:this.props.counter.value // from parent props is being passed 
     }
 
     getbadgeClass = ()=>{
@@ -22,7 +22,7 @@ class Counter extends Component {
             <div className="counter">
                 <span className={this.getbadgeClass()+' value'}>{this.state.value===0?"Zero":this.state.value}</span>
                 <button className="btn btn-primary btn-lg" onClick={this.handleIncrement}>Increment</button>
-                <button className="btn btn-danger  btn-sm m-2" onClick={()=>this.props.onDelete(this.props.id)}>Delete</button> {/* Idea:function was passed as prop*/}
+                <button className="btn btn-danger  btn-sm m-2" onClick={()=>this.props.onDelete(this.props.counter.id)}>Delete</button> {/* Idea:function was passed as prop*/}
             </div> 
         );
     }
