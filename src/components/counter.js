@@ -7,7 +7,7 @@ class Counter extends Component {
 
     getbadgeClass = ()=>{
         // Conditional Rendering
-        let classes = 'badge badge-';
+        let classes = 'btn btn-';
         classes+= this.state.value===0?'warning':'danger';
         return classes;
     }
@@ -17,8 +17,8 @@ class Counter extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <span className={this.getbadgeClass()}>{this.state.value}</span>
+            <div className="counter">
+                <span className={this.getbadgeClass()+' value'}>{this.state.value===0?"Zero":this.state.value}</span>
                 <button className="btn btn-primary btn-lg" onClick={this.handleIncrement}>Increment</button>
             </div> 
         );
