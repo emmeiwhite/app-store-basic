@@ -12,17 +12,19 @@ class Counters extends Component {
         ]
      }
 
-    deleteHandler = (index)=>{
-     const newState =  {...this.state}; // copied the state
-     newState.counters.splice(index,1);
-     this.setState(newState);
+    deleteHandler = (counterId)=>{
+     console.log("Delete Handler!!!",counterId);
+    //  const newState =  {...this.state}; // copied the state
+    //  newState.counters.splice((counterId-1),1);
+    //  this.setState(newState);
+
     }
 
     render() { 
         return ( 
             <div className="counters">
-             {this.state.counters.map((counter,index)=>{
-                 return <Counter key={counter.id} value={counter.value} onDelete={()=>this.deleteHandler(index)}/> 
+             {this.state.counters.map((counter)=>{
+                 return <Counter key={counter.id} value={counter.value} id={counter.id} onDelete={this.deleteHandler}/> 
              })}
             </div>
            
