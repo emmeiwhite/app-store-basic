@@ -14,18 +14,25 @@ class Counters extends Component {
      }
 
     deleteHandler = (counterId)=>{
-     console.log("Delete Handler!!!",counterId);
-    //  const newState =  {...this.state}; // copied the state
-    //  newState.counters.splice((counterId-1),1);
-    //  this.setState(newState);
-
         const counters = this.state.counters.filter(c=>c.id!==counterId);
         this.setState({counters})
     }
 
+    handleReset = ()=>{
+        // Let's try to modify the state by setting the value of counters to 0, let's check the bahavior
+
+        const counters = this.state.counters.map(counter=>{
+            return counter.value=0;
+        });
+
+        this.setState({counters}); 
+
+
+    }
     render() { 
         return ( 
             <div className="counters">
+                <button className="btn btn-primary m-2 btn-lg" onClick={this.handleReset}>Reset</button>
              {this.state.counters.map((counter)=>{
                  return <Counter 
                         key={counter.id}
