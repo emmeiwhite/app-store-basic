@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   state = { 
       counters:[
-          {id:1,value:0},
+          {id:1,value:4},
           {id:2,value:0},
           {id:3,value:0},
           {id:4,value:0},
@@ -44,13 +44,16 @@ class App extends Component {
   render() {
     return (
       <div className="row">
-          <Navbar />
-          <Counters 
-            onDelete={this.handleDelete}
-            onIncrement={this.handleIncrement}
-            counters={this.state.counters}
-            onReset={this.handleReset}
-          />
+          <Navbar totalCounters={this.state.counters.filter(c=>c.value>0).length}/>
+          <main className="container">
+            <Counters 
+              onDelete={this.handleDelete}
+              onIncrement={this.handleIncrement}
+              counters={this.state.counters}
+              onReset={this.handleReset}
+            />
+          </main>
+          
       </div>
     );
   }
