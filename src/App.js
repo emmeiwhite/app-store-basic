@@ -6,6 +6,11 @@ import './App.css';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    console.log("Constructor - Method !!!");
+  }
   state = { 
       counters:[
           {id:1,value:4},
@@ -13,6 +18,10 @@ class App extends Component {
           {id:3,value:0},
           {id:4,value:0},
       ]
+  }
+
+  componentDidMount(){
+    console.log("Component DidMount")
   }
 
   handleDelete = (counterId)=>{
@@ -42,6 +51,7 @@ class App extends Component {
 
   }
   render() {
+    console.log('Component - Rendered')
     return (
       <div className="row">
           <Navbar totalCounters={this.state.counters.filter(c=>c.value>0).length}/>

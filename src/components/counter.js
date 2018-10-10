@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     // Removing local state from the child
-   
+   componentDidUpdate(prevProps,prevState){
+       console.log("prevProps",prevProps);
+       console.log("prevState",prevState);
+    //    We can do something like this in General.
 
+    if(prevProps.counter.value!==this.props.counter){
+        // AJAX Call and get new Data from the Source
+    }
+   }
+
+   componentWillUnmount(){
+    //    Just before the Component is removed from the DOM this mehtod is invoked
+    console.log('COMPONENT - REMOVED');
+   }
     getbadgeClass = ()=>{
         // Conditional Rendering
         let classes = 'btn btn-';
@@ -19,6 +31,8 @@ class Counter extends Component {
     }
     // handleIncrement will also come from the parent only: In short both data and implementation will be handled by Parent
     render() { 
+
+        console.log('Counter Component Rendered');
         return ( 
             <div className="counter">
                 <span className={this.getbadgeClass()+' value'}>{this.formatCount()}</span>
